@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Tâches</title>
+    <!-- Chargement de Tailwind CSS pour un style rapide et moderne -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lien vers notre fichier CSS personnalisé -->
+    <link rel="stylesheet" href="popup.css">
+    <!-- Configuration de Tailwind pour utiliser la police Inter -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 w-80">
+    <div class="container mx-auto">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Mes Tâches</h1>
+
+        <!-- Section pour ajouter une nouvelle tâche -->
+        <div class="flex flex-col mb-4 gap-2">
+            <input type="text" id="taskInput" placeholder="Ajouter une nouvelle tâche..."
+                   class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="date" id="dueDateInput"
+                   class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button id="addTaskButton"
+                    class="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition duration-200 ease-in-out">
+                Ajouter
+            </button>
+        </div>
+
+        <!-- Liste des tâches -->
+        <ul id="taskList" class="bg-white rounded-lg shadow-md divide-y divide-gray-200">
+            <!-- Les tâches seront insérées ici par JavaScript -->
+        </ul>
+    </div>
+
+    <!-- Lien vers notre script JavaScript, chargé à la fin pour s'assurer que le DOM est prêt -->
+    <script src="popup.js"></script>
+</body>
+</html>

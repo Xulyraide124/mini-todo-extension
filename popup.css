@@ -1,0 +1,246 @@
+/* popup.css - Version Stylisée */
+
+/* Import de la police Inter depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Styles généraux pour le corps de la popup */
+body {
+    font-family: 'Inter', sans-serif;
+    min-width: 320px; /* Légèrement plus large pour l'esthétique */
+    max-width: 420px; /* Largeur maximale */
+    padding: 20px; /* Plus de padding */
+    background: linear-gradient(to bottom right, #e0f2fe, #bfdbfe); /* Dégradé de fond léger */
+    color: #1f2937; /* Couleur de texte plus foncée */
+    border-radius: 12px; /* Coins plus arrondis */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Ombre plus prononcée */
+    transition: all 0.3s ease-in-out; /* Transition douce pour les changements */
+}
+
+/* Titre */
+h1 {
+    color: #1a202c; /* Couleur de titre plus sombre */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Petite ombre sur le texte */
+}
+
+/* Section d'ajout de tâche */
+.flex-col.mb-4.gap-2 {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0; /* Bordure légère */
+}
+
+/* Styles pour les champs de saisie */
+#taskInput, #dueDateInput {
+    border: 1px solid #cbd5e0; /* Bordure plus douce */
+    border-radius: 8px; /* Coins plus arrondis */
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); /* Ombre interne subtile */
+}
+
+#taskInput:focus, #dueDateInput:focus {
+    border-color: #3b82f6; /* Bordure bleue au focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Anneau de focus plus visible */
+    background-color: #f8fafc; /* Fond légèrement plus clair au focus */
+}
+
+/* Bouton d'ajout de tâche */
+#addTaskButton {
+    background: linear-gradient(to right, #3b82f6, #2563eb); /* Dégradé sur le bouton */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: none; /* Supprime la bordure par défaut */
+}
+
+#addTaskButton:hover {
+    background: linear-gradient(to right, #2563eb, #1d4ed8); /* Dégradé plus foncé au survol */
+    box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px); /* Léger mouvement vers le haut */
+}
+
+#addTaskButton:active {
+    transform: translateY(0); /* Retour à la position normale au clic */
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.08);
+}
+
+/* Liste des tâches */
+#taskList {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden; /* Cache le débordement des coins arrondis */
+    border: 1px solid #e2e8f0; /* Bordure légère */
+}
+
+/* Styles pour les éléments de la liste de tâches */
+.task-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 14px 16px; /* Plus de padding */
+    border-bottom: 1px solid #f1f5f9; /* Ligne de séparation plus douce */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.task-item:last-child {
+    border-bottom: none; /* Pas de bordure sur le dernier élément */
+}
+
+.task-item:hover {
+    background-color: #f0f8ff; /* Couleur de survol plus claire */
+    transform: translateY(-1px); /* Léger soulèvement au survol */
+}
+
+/* Style pour le texte de la tâche */
+.task-text {
+    flex-grow: 1;
+    margin-left: 12px;
+    font-size: 1rem;
+    color: #1f2937;
+    word-break: break-word;
+    cursor: pointer;
+    padding: 2px 0;
+    transition: color 0.2s ease;
+}
+
+/* Style pour les tâches complétées */
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: #9ca3af; /* Gris plus clair pour les tâches complétées */
+}
+
+/* Style pour le champ d'édition de tâche (dynamiquement créé) */
+.task-edit-input {
+    flex-grow: 1;
+    margin-left: 12px;
+    padding: 4px 6px; /* Plus de padding */
+    border: 1px solid #93c5fd; /* Bordure bleue claire */
+    border-radius: 6px; /* Coins plus arrondis */
+    font-size: 1rem;
+    color: #1f2937;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Anneau de focus plus prononcé */
+}
+
+/* Style pour la date limite */
+.task-due-date {
+    font-size: 0.85rem; /* Légèrement plus petit */
+    color: #64748b; /* Gris-bleu pour la date */
+    margin-left: 12px;
+    min-width: 90px; /* Largeur minimale */
+    text-align: right;
+    margin-top: 4px;
+    font-weight: 500; /* Légèrement plus gras */
+}
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 360px) { /* Ajusté pour une meilleure réactivité */
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .task-text, .task-edit-input {
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%; /* Prend toute la largeur */
+    }
+    .task-due-date {
+        margin-left: 0;
+        text-align: left;
+        width: 100%;
+        margin-top: 4px;
+    }
+    .delete-button {
+        margin-left: 0;
+        margin-top: 10px; /* Plus d'espace */
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Styles pour la case à cocher personnalisée */
+.task-checkbox {
+    appearance: none;
+    width: 22px; /* Légèrement plus grand */
+    height: 22px;
+    border: 2px solid #94a3b8; /* Bordure gris-bleu */
+    border-radius: 6px; /* Coins plus arrondis */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0; /* Empêche de rétrécir */
+}
+
+.task-checkbox:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Ombre au check */
+}
+
+.task-checkbox:checked::before {
+    content: '✔';
+    color: white;
+    font-size: 16px; /* Coche plus grande */
+    line-height: 1;
+}
+
+.task-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Styles pour le bouton de suppression */
+.delete-button {
+    background: linear-gradient(to right, #ef4444, #dc2626); /* Dégradé rouge */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Plus de padding */
+    border-radius: 8px; /* Coins plus arrondis */
+    cursor: pointer;
+    font-size: 0.875rem;
+    margin-left: auto;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Empêche de rétrécir */
+}
+
+.delete-button:hover {
+    background: linear-gradient(to right, #dc2626, #b91c1c); /* Dégradé plus foncé au survol */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.delete-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Largeur de la scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Couleur de fond de la piste */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a8c4f7; /* Couleur du "pouce" de la scrollbar */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #87a7e0; /* Couleur au survol du "pouce" */
+}
